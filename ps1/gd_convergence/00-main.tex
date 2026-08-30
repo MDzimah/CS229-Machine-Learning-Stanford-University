@@ -1,0 +1,49 @@
+\item \points{30}	{\bf Convergence and Learning Rate for Gradient Descent}
+
+When running an optimization algorithm, finding a good learning rate may require some tuning. 
+If the learning rate is too high, the gradient descent (GD) algorithm might not converge. If the learning rate is too low, GD may take too long to converge.
+In this question, we will investigate some theoretical guarantees for the convergence of GD on convex objective functions, and their implications on choosing the learning rate.
+
+{\bf Recap and notation.} Suppose we have a convex
+objective function $J(\theta)$. At each iteration, GD updates the iterate $\theta^{[t]}$ as 
+follows:
+\begin{equation*}
+	\theta^{[t]} = \theta^{[t-1]} - \alpha\nabla J(\theta^{[t-1]})
+\end{equation*}
+
+where $\alpha$ is the learning rate and $\nabla J(\theta^{[t-1]})$ is the gradient of $J(\theta)$ evaluated at $\theta^{[t-1]}$.
+
+\begin{enumerate}
+\input{gd_convergence/01-quadratic}
+
+\ifnum\solutions=1{
+  \input{gd_convergence/01-quadratic-sol}
+}\fi
+
+\input{gd_convergence/02-multivar}
+
+\ifnum\solutions=1{
+	\input{gd_convergence/02-multivar-sol}
+}\fi
+
+\input{gd_convergence/03-lr-experiment}
+
+\ifnum\solutions=1{
+	\input{gd_convergence/03-lr-experiment-sol}
+}\fi
+
+\input{gd_convergence/04-general}
+
+\ifnum\solutions=1{
+	\input{gd_convergence/04-general-sol}
+}\fi
+
+\input{gd_convergence/05-lms-hessian}
+
+\ifnum\solutions=1{
+	\input{gd_convergence/05-lms-hessian-sol}
+}\fi
+
+
+
+\end{enumerate}

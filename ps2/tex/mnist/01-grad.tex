@@ -1,0 +1,35 @@
+\item \points{5} 
+
+%For a single input example $x^{(i)}$ with one-hot label vector $y^{(i)}$, show that $$\nabla_{z^{(i)}} \mathrm{CE}(y^{(i)}, \hat{y}^{(i)}) = \nabla_{z^{(i)}} \mathrm{CE}(y^{(i)}, \mathrm{softmax}(z^{(i)}) ) = \hat{y}^{(i)} - y^{(i)} \in \mathbb{R}^K$$
+
+
+%\tnote{Tengyu's edit starts}
+
+
+Let $t\in \R^k, y\in \{1,\dots, k\}$ and $p = \softmax(t)$. 
+Prove that 
+\begin{align}
+\frac{\partial \ell_\textup{CE}(t, y)}{\partial t} = p - e_y \in \Re^k,
+\end{align}
+
+where $e_y\in \Re^k$ is the one-hot embedding of $y$, (where the $y$-th entry is 1 and all other entries are zeros.)
+As a direct consequence, 
+
+\begin{align}
+\frac{\partial \ell_\textup{CE}(\bar{h}_{\theta}(x^{(i)}), y^{(i)})}{\partial \bar{h}_{\theta}(x^{(i)})} = \mathrm{softmax}(\bar{h}_{\theta}(x^{(i)})) - e_{y^{(i)}}  = {h}_{\theta}(x^{(i)})- e_{y^{(i)}}\in \Re^k
+\end{align}
+
+
+
+%\tnote{Tengyu's edit ends}
+
+%\tnote{use the above notation system, check the equation's correctness, and update the hints (or even maybe not hints? No hints sounds good to me)}
+
+
+
+
+where $\bar{h}_{\theta}(x^{(i)}) \in \mathbb{R}^k$ is the input to the softmax function, i.e. $${h}_{\theta}(x^{(i)}) = \mathrm{softmax}(\bar{h}_{\theta}(x^{(i)}))$$
+
+(Note: in deep learning, $\bar{h}_{\theta}(x^{(i)})$ is sometimes referred to as the "logits".)
+
+%\textbf{Hint:} To simplify your answer, it might be convenient to denote the true label of $x^{(i)}$ as $l \in \{1,\dots,K\}$. Hence $l$ is the index such that that $y^{(i)} = [0,...,0,1,0,...,0]^\top$ contains a single 1 at the $l$-th position. You may also wish to compute $\displaystyle \frac{\partial \mathrm{CE}(y^{(i)}, \hat{y}^{(i)})}{\partial z^{(i)}_j}$ for $j\neq l$ and $j=l$ separately.

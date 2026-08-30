@@ -1,0 +1,19 @@
+\item \points{2} {\bf Learning Rate for Linear Regression}
+
+Consider using GD on the LMS objective introduced in lecture:
+\begin{equation*}
+	J(\theta) = \frac{1}{2}||X\theta - y||_2^2
+\end{equation*}
+where $X\in\mathbb{R}^{n\times d}$ is the design matrix of our data, $\theta\in\mathbb{R}^d$ is our parameter, and $\vec{y}\in\mathbb{R}^n$  is the response variable. 
+
+Let $\beta_{\max}$ be the largest eigenvalue of $X^\top X$. Prove that for all  $\alpha \in (0, \frac{1}{\beta_{\max}})$, GD with learning rate $\alpha$ satisfies that $J(\theta^{[t]})$ converges as $t\rightarrow \infty.$
+	
+\textit{Hint:}	You can invoke the statements in the part (d) (including the optional question in part (d)) to solve this part (even if you were not able to prove part (d).)
+
+\textbf{Remark:} The conclusion here suggests that for linear regression, roughly speaking, you should use smaller learning rates if the scale of your data $X$ is big or if the data points are correlated with each other, both of which will enable a large top eigenvalue of $X^\top X$.
+
+\textbf{Remark:} Even though in many cases the LMS objective can be solved 
+exactly by solving the normal equation as shown in lecture, it is still useful to be able to guarantee convergence
+when using the Gradient Descent algorithm in situations where it is difficult to solve
+for the optimal $\theta^*$ directly (such as having large amount of data making inverting $X$
+very expensive).

@@ -1,0 +1,64 @@
+% !TeX root = ps1.tex
+
+\def\qtr{Summer 2025}
+\def\due{Friday, July 11, 2025 at 11:59 pm}
+\def\latedue{Monday, July 14, 2025 at 11:59 pm}
+\def\edstem{\url{https://edstem.org/us/courses/79825/discussion}}
+\def\psetnum{1}
+
+
+\input{macros.tex}
+\def\shownotes{1}  %set 1 to show author notes
+\ifnum\shownotes=1
+\newcommand{\authnote}[2]{$\ll$\textsf{\footnotesize #1 notes: #2}$\gg$}
+\else
+\newcommand{\authnote}[2]{}
+\fi
+
+\newcommand{\solutions}{1}
+%\newcommand{\tnote}[1]{{\color{blue}\authnote{Tengyu}{#1}}}
+%\newcommand{\knote}[1]{{\color{blue}\authnote{Kefan}{#1}}}
+%\newcommand{\fk}[1]{{\color{purple}{[FK:#1]}}}
+%\newcommand{\notes}[1]{{\color{blue} Note:} \textit{#1} \newline}
+
+\begin{document}
+
+\pagestyle{myheadings} \markboth{}{CS229 Problem Set \#\psetnum}
+
+\ifnum\solutions=1{
+{\huge\noindent CS 229, \qtr\\
+Problem Set \#\psetnum}\\\\
+Baran Peters (\texttt{baranp@stanford.edu})
+} \else {\huge
+\noindent CS 229, \qtr\\
+Problem Set \#\psetnum
+} \fi
+
+\ruleskip
+
+{\bf Due {\due } on Gradescope.}
+
+\medskip
+
+\input{00-instructions/00-main}
+
+\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
+
+\clearpage
+\input{gd_convergence/00-main}
+
+\clearpage
+\input{lwr/00-main}
+
+\clearpage
+\input{featuremaps/00-main}
+
+\clearpage
+\input{implicitreg/00-main}
+
+\clearpage
+\input{doubledescent/00-main}
+
+\end{enumerate}
+
+\end{document}

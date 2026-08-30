@@ -1,0 +1,23 @@
+\item \points{4} {\bf Coding Question: Quadratic Multivariate Objective}
+
+Let the objective function be 
+\begin{equation*}
+	J(\theta) = \theta^\top A\theta
+\end{equation*}
+
+where $A\in\mathbb{R}^{2\times 2}$ is a $2 \times 2$ real, positive semi-definite matrix. Do the following exercises:
+
+\begin{enumerate}
+	\item Implement the \texttt{update\_theta} and \texttt{gradient\_descend} function in \url{src/gd_convergence/experiment.py}. You can stop the GD algorithm when either of the following condition is satisfied:
+	\begin{enumerate}
+		\item $|J(\theta^{[t]}) - J(\theta^{[t-1]})| < \epsilon$ where $\epsilon=10^{-50}$ is given as the function parameter. This is when we assume the algorithm converged. 
+		\item $J(\theta^{[t]}) > 10^{20}$. This is to prevent an infinite loop when the algorithm does not converge.
+	\end{enumerate}
+	To test your implementation, run \texttt{python src/gd\_convergence/experiment.py}, which checks that your $\theta$ (approximately) converges to the optimal value. \\
+	\\
+	Note that we have provided you a matrix $A=\begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix}$ and $\theta^{[0]} = [-1, 0.5]$ at the beginning of the file for you to experiment with. Therefore, the objective function is a special case of the objective function in part (b) with dimension $d=2$. Check if your theoretical derivation of the feasible range of the learning rate indeed matches empirical observations. 
+	\item Now, suppose we rotate the matrix $A$, what do we observe?
+	 Plot the trajectories of the GD algorithm using the following learning rates: $0.05$, $0.1$, $0.2$, $0.3$, $0.4$, $0.45$, $0.5$, and $1$. We have provided the rotation and plotting function for you. You need to simply run \texttt{python src/gd\_convergence/plotting.py lr1 lr2 lr3 ...} with \texttt{lr*} replaced with desired learning rates. Include the output file \url{trajectories.png} and \url{trajectories_rotated.png}, as well as a brief discussion on the printed output of \url{plotting.py} in the write-up.
+\end{enumerate}
+
+Remark: Setting the learning rate too high will cause the objective function to not converge. The convergence properties of these learning rates are also rotational invariant. We will show this formally in the next part of the problem.

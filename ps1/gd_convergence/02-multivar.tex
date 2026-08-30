@@ -1,0 +1,8 @@
+\item \points{4} {\bf Quadratic Objective, d-dimensional Variable}
+
+In this part of the question, consider the objective function with $d$-dimensional variable $\theta$:
+\begin{equation*}
+	J(\theta) = \frac{1}{2}\sum_{i=1}^d \beta_i\theta_i^2
+\end{equation*}
+where $\theta_i$'s are our parameters and $\beta_i\in \mathbb{R}\ s.t.\ \beta_i > 0$ are positive, constant scalars.
+Assume that we start from some $\theta^{[0]}$\ where	$\theta_i^{[0]} \neq 0$ for all $i$ and run GD with learning rate $\alpha$. Derive the range of learning rate $\alpha$ such that GD converges in the sense that there exists a vector $\theta^\dagger\in \mathbb{R}^d$ such that $\lim_{t\to\infty} \|\theta^{[t]}-\theta^\dagger\|_2 = 0$.   Provide the value of $\theta^\dagger$ when GD converges. The range of $\alpha$ can potentially depend on $\beta_i$ where $i \in \{1,\dots,d\}$. 

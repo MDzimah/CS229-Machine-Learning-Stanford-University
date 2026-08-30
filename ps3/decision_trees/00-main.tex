@@ -1,0 +1,49 @@
+\item \points{20} {\bf Decision Trees and Gini Loss}
+
+When growing a decision tree, we split the input space in a greedy, top-down, recursive manner.  Given a parent region $R_p$, we can choose a split $s_p(j, t)$ which yields two child regions $R_1 = \{X \mid x_j < t, X \in R_p\}$ and $R_2 = \{X \mid x_j \geq t, X\in R_p\}$.  Assuming we have defined a per region loss $L(R)$, at each branch we select the split that minimizes the weighted loss of the children:
+
+\begin{align*}
+    \min_{j,t} \frac{\lvert R_1 \rvert L(R_1) + \lvert R_2 \rvert L(R_2)}{\lvert R_1 \rvert + \lvert R_2 \rvert}
+\end{align*}
+
+When performing classification, a commonly used loss is the Gini loss, defined for the K-class classification problem as:
+
+\begin{align*}
+    G(R_m) = G(\vec{p}_m) = \sum_{k=1}^K p_{mk} (1 - p_{mk})
+\end{align*}
+
+Where $\vec{p}_m = \begin{bmatrix}p_{m1} & p_{m2} & \dots & p_{mK}\end{bmatrix}$ and $p_{mk}$ is the proportion of examples of class $k$ that are are present in region $R_m$.  However, we are oftentimes more interested in optimizing the final misclassification loss:
+
+\begin{equation}
+    \label{misclassificationloss}
+    M(R_m) = M(\vec{p}_m) = 1 - \max_k p_{mk} 
+\end{equation}
+
+For the problems below, assume we are dealing with binary classification and that there are no degenerate cases where positive and negative datapoints overlap in the feature space.
+
+\begin{enumerate}
+    \input{decision_trees/01-children}
+    
+	\ifnum\solutions=1 {
+	\input{decision_trees/01-children-sol}
+        } \fi
+        
+    \input{decision_trees/02-cases}
+    
+	\ifnum\solutions=1 {
+	\input{decision_trees/02-cases-sol}
+        } \fi
+        
+    \input{decision_trees/03-misclas}
+    
+	\ifnum\solutions=1 {
+	\input{decision_trees/03-misclas-sol}
+        } \fi
+        
+    \input{decision_trees/04-avg-var}
+    
+	\ifnum\solutions=1 {
+	\input{decision_trees/04-avg-var-sol}
+        } \fi
+        
+\end{enumerate}

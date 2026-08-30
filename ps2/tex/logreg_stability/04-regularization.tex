@@ -1,0 +1,9 @@
+\item \subquestionpoints{5} \textbf{Coding question}
+To attempt to fix the issues brought up in the previous subequestions, implement L2 regularization in \texttt{src/logreg\_stability/logreg.py}. Specifically, modify the gradient update to reflect the following loss function:
+\begin{equation}
+J(\theta)
+	= -\frac{1}{\nexp} \sum_{i=1}^\nexp \left(y^{(i)}\log(h_{\theta}(x^{(i)}))
+		+  (1 - y^{(i)})\log(1 - h_{\theta}(x^{(i)}))\right) + \frac{1}{2} \lambda \|\theta\|_2^2.
+\end{equation}
+
+Run the same code as in the previous subquestion using $\lambda = 0.01$. For both datasets, print the final value of $\theta$, and compare it to the final value of $\theta$ without regularization. Additionally, include a plot of the decision boundary and training data for both datasets and comment on the results qualitatively. How does the decision boundary compare to the one obtained without regularization, especially with respect to the worst misclassified example; in what cases may this be desirable?

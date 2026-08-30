@@ -1,0 +1,43 @@
+\item \points{35} {\bf Implicit Regularization}
+
+Recall that in the overparameterized regime (where the number of parameters is larger than the number of samples), typically there are infinitely many solutions that can fit the training dataset perfectly, and many of them cannot generalize well (that is, they have large validation errors). However, in many cases, the particular optimizer we use (e.g., GD, SGD with particular learning rates, batch sizes, noise, etc.) tends to find solutions that generalize well. This phenomenon is called implicit regularization effect (also known as algorithmic regularization or implicit bias). 
+
+In this problem, we will look at the implicit regularization effect on two toy examples in the overparameterized regime: linear regression and a quadratically parameterized model. For linear regression, we will show that gradient descent with zero initialization will always find the minimum norm solution (instead of an arbitrary solution that fits the training data), and in practice, the minimum norm solution tends to generalize well. For a quadratically parameterized model, we will show that initialization and batch size also affect generalization.
+
+\begin{enumerate}
+    \input{implicitreg/01-linear-overfitting}
+    	\ifnum\solutions=1 {
+	\input{implicitreg/01-linear-overfitting-sol}
+    	}\fi
+    
+    
+    \input{implicitreg/02-linear-overfitting}
+    \ifnum\solutions=1 {
+    	\input{implicitreg/02-linear-overfitting-sol}
+    	}\fi
+    
+    \input{implicitreg/03-linear-coding}
+	\ifnum\solutions=1 {
+		\input{implicitreg/03-linear-coding-sol}
+		}\fi
+	
+	\input{implicitreg/04-linear-gd}
+	\ifnum\solutions=1 {
+		\input{implicitreg/04-linear-gd-sol}
+	}\fi
+
+	\input{implicitreg/05-qp-overfitting}
+	\ifnum\solutions=1 {
+		\input{implicitreg/05-qp-overfitting-sol}
+	}\fi
+
+	\input{implicitreg/06-qp-initialization}
+	\ifnum\solutions=1 {
+		\input{implicitreg/06-qp-initialization-sol}
+	}\fi
+
+	\input{implicitreg/07-qp-batchsize}
+	\ifnum\solutions=1 {
+		\input{implicitreg/07-qp-batchsize-sol}
+	}\fi
+\end{enumerate}

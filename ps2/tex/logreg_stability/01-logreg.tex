@@ -1,0 +1,31 @@
+\item \subquestionpoints{10} \textbf{Coding question}
+
+In lecture we saw the average empirical loss for logistic regression:
+\begin{equation*}
+	J(\theta)
+	= -\frac{1}{\nexp} \sum_{i=1}^\nexp \left(y^{(i)}\log(h_{\theta}(x^{(i)}))
+		+  (1 - y^{(i)})\log(1 - h_{\theta}(x^{(i)}))\right),
+\end{equation*}
+where $y^{(i)} \in \{0, 1\}$, $h_\theta(x) = g(\theta^T x)$ and
+$g(z) = 1 / (1 + e^{-z})$.
+
+Implement logistic regression using gradient descent in
+\texttt{src/logreg\_stability/logreg.py}.
+
+Starting with $\theta = \vec{0}$, run gradient descent until the updates to
+$\theta$ are small: Specifically, train until the first iteration $k$ such
+that $\|\theta_{k} - \theta_{k-1}\|_1 < \epsilon$, where
+$\epsilon = 1\times 10^{-5}$, or for a maximum of $10^5$ iterations. Then, perform logistic regression on dataset $A$ in \\
+\texttt{src/logreg\_stability/ds1\_a.csv}. You can run the code by simply executing
+\texttt{python logreg.py} in the \texttt{src/logreg\_stability} directory.
+
+Include a plot of the training data with $x_1$ on the horizontal axis and $x_2$ on the vertical axis.
+To visualize the two classes, use a different symbol for examples $x^{(i)}$
+with $y^{(i)} = 0$ than for those with $y^{(i)} = 1$. On the same figure, plot the decision boundary
+found by logistic regression (i.e., line corresponding to $p(y|x) = 0.5$).
+
+\textbf{Note:} If you want to print the loss during training, you may encounter some numerical instability issues. Recall that the loss function on an example $(x,y)$ is defined as
+$$y\log(h_{\theta}(x)) +  (1 - y)\log(1 - h_{\theta}(x)),$$
+where $h_\theta(x)=(1+\exp(-x^\top \theta))^{-1}.$ Technically speaking, $h_{\theta}(x)\in(0,1)$ for any $\theta,x\in\R^{d}.$ However, in Python a real number only has finite precision. So it is possible that in your implementation, $h_{\theta}(x)=0$ or $h_{\theta}(x)=1$, which makes the loss function ill-defined. A typical solution to the numerical instability issue is to add a small perturbation. In this case, you can compute the loss function using
+$$y\log(h_{\theta}(x) + \epsilon) +  (1 - y)\log(1 - h_{\theta}(x) + \epsilon),$$
+instead, where $\epsilon$ is a very small perturbation (for example, $\epsilon=10^{-5}$).

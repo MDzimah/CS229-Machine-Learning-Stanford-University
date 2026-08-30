@@ -1,0 +1,17 @@
+\item \points{8} {\bf Quadratic Objective, Scalar Variable}
+
+In this part, consider the simple objective function with one-dimensional variable $\theta$:
+\begin{equation*}
+	J(\theta) = \frac{1}{2}\beta\theta^2
+\end{equation*}
+where $\theta \in\mathbb{R}$ is our parameter and $\beta\ > 0$ is a positive, constant scalar.
+We initialize GD at some initialization $\theta^{[0]} \neq 0$ and run GD with learning rate $\alpha$. 
+
+\begin{enumerate}
+	\item \textbf{Derive} the range of $\alpha$ such that the iterate of GD converges in the sense that there exists a scalar $\theta^\dagger$ such that $\lim_{t\to\infty} |\theta^{[t]}-\theta^\dagger| = 0$.   Provide the value of $\theta^\dagger$ when GD converges and show that it's equal to the global minimum $\theta^* = \arg\min_\theta J(\theta)$. The range of $\alpha$ can potentially depend on $\beta$. 
+	\item Given a desired accuracy $\epsilon > 0$, for all the $\alpha$ in the range that you derived, \textbf{derive} the minimum number of iterations $T$ required to reach a point $\theta^{[T]}$ such that $|\theta^{[T]} - \theta^*| \le \epsilon$. $T$ can potentially depend on $\epsilon$, $\theta^{[0]}$, $\alpha$, and $\beta$. Investigate the behavior of $T$ and whether $T$ is increasing or decreasing for different values of $\alpha$. Briefly discuss why choosing an inappropriate $\alpha$ can cause the algorithm to take longer to converge.
+\end{enumerate}
+
+\textit{Hint:} Express $\theta^{[t]}$ in terms of $\theta^{[0]}$, $\alpha$, $t$, and $\beta$. 
+
+\textit{Hint:} $\lim_{t\to\infty} c^t = 0, \quad\forall c\in\mathbb{R} \ s.t.\ |c|<1$ 

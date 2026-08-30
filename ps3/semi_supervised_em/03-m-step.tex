@@ -1,0 +1,31 @@
+\item\subquestionpoints{10} \textbf{Semi-supervised M-Step.}
+Clearly state which are all the parameters that need to be re-estimated in the M-step. Derive the M-step to re-estimate all the stated parameters.  Specifically,
+derive closed form expressions for the parameter update rules for $\mu^{(t+1)}$ and $\phi^{(t+1)}$ based on the semi-supervised objective. As an example, we will derive the update rule for $\Sigma^{(t+1)}$ below.
+
+In order to simplify derivation, we denote $$w_j^{(i)} = Q^{(t)}_i(\zsi=j),$$ and $$\tilde{w}_j^{(i)} = \begin{cases} \alpha & \tilde{z}^{(i)} = j \\ 0 & \text{ otherwise.} \end{cases}$$
+
+We further denote $S = \Sigma^{-1}$, and note that because of chain rule of calculus, $\nabla_S\ell = 0 \Rightarrow \nabla_\Sigma \ell = 0$. So we choose to rewrite the M-step in terms of $S$ and maximize it w.r.t $S$, and re-express the resulting solution back in terms of $\Sigma$.
+
+Based on this, the M-step becomes:
+\begin{align*}
+\phi^{(t+1)}, \mu^{(t+1)}, S^{(t+1)} &=  \arg\max_{\phi,\mu,S} \sum_{i=1}^\nexp \sum_{j=1}^k Q_i^{(t)}(\zsi) \log \frac{p(\xsi,\zsi;\phi,\mu,S)}{Q_i^{(t)}(\zsi)} + \sum_{i=1}^{\tilde{\nexp}} \log p(\tilde{\xsi}, \tilde{\zsi}; \phi, \mu, S)\\
+&=\arg\max_{\phi, \mu, S} \sum_{i=1}^\nexp \sum_{j=1}^k w^{(i)}_j \log \frac{ \frac{|S_j|^{1/2}}{(2\pi)^{\di/2}} \exp\left(-\frac{1}{2}(\xsi-\mu_j)^TS_j(\xsi-\mu_j)\right) \phi_j}{w^{(i)}_j } \\
+&\quad\quad\quad +\sum_{i=1}^{\tilde{\nexp}} \sum_{j=1}^k \tilde{w}^{(i)}_j \log \frac{ \frac{|S_j|^{1/2}}{(2\pi)^{\di/2}} \exp\left(-\frac{1}{2}(\tilde{x}^{(i)}-\mu_j)^TS_j(\tilde{x}^{(i)}-\mu_j)\right) \phi_j}{\tilde{w}^{(i)}_j } \\
+\end{align*}
+
+Then we derive the update for $\Sigma_j$ via $S_j$ (absorbing irrelevant constants into $C$):
+\begin{align*}
+0 &= \nabla_{S_j} \left(\ldots\right) \\
+&= \nabla_{S_j} \left(C + \sum_{i=1}^\nexp w^{(i)}_j\left(\log |S_j| - (\xsi-\mu_j)^TS_j(\xsi-\mu_j)\right) + \sum_{i=1}^{\tilde{\nexp}} \tilde{w}^{(i)}_j\left(\log |S_j| - (\tilde{x}^{(i)}-\mu_j)^TS_j(\tilde{x}^{(i)}-\mu_j)\right)\right) \\
+&= \sum_{i=1}^\nexp w^{(i)}_j\left(S_j^{-1} - (\xsi-\mu_j)(\xsi-\mu_j)^T\right) + \sum_{i=1}^{\tilde{\nexp}} \tilde{w}^{(i)}_j\left(S_j^{-1} - (\tilde{x}^{(i)}-\mu_j)(\tilde{x}^{(i)}-\mu_j)^T\right) \\
+&= \left(\sum_{i=1}^\nexp w^{(i)}_j + \sum_{i=1}^{\tilde{\nexp}} \tilde{w}^{(i)}_j\right) S_j^{-1} - \left(\sum_{i=1}^\nexp w_{j}^{(i)}(\xsi-\mu_j)(\xsi-\mu_j)^T + \sum_{i=1}^{\tilde{\nexp}} \tilde{w}^{(i)}_j(\tilde{x}^{(i)} - \mu_j)(\tilde{x}^{(i)}-\mu_j)^T\right) \\
+&\Rightarrow \Sigma_j^{(t+1)} = \frac{\sum_{i=1}^\nexp w_{j}^{(i)}(\xsi-\mu_j)(\xsi-\mu_j)^T + \sum_{i=1}^{\tilde{\nexp}} \tilde{w}^{(i)}_j(\tilde{x}^{(i)} - \mu_j)(\tilde{x}^{(i)}-\mu_j)^T}{\sum_{i=1}^\nexp w^{(i)}_j + \sum_{i=1}^{\tilde{\nexp}} \tilde{w}^{(i)}_j}
+\end{align*}
+
+This results in the update expression:
+\begin{align*}
+  \Sigma_j & := \frac{ \sum_{i=1}^\nexp w^{(i)}_j(\xsi-\mu_j)(\xsi-\mu_j)^T + \alpha\sum_{i=1}^{\tilde{\nexp}} \textbf{1}\{\tilde{z}^{(i)} = j\}(\tilde{x}^{(i)}-\mu_j)(\tilde{x}^{(i)}-\mu_j)^T} {\sum_{i=1}^\nexp w^{(i)}_j + \alpha\sum_{i=1}^{\tilde{\nexp}} \textbf{1}\{\tilde{z}^{(i)} = j\} }
+\end{align*}
+
+Now derive the update rules for $\mu^{(t+1)}$ and $\phi^{(t+1)}$. (\textbf{Hint}: section 11.4 of the notes would be relevant to this problem.)
+

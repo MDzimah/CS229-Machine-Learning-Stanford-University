@@ -1,0 +1,22 @@
+\item \points{12} {\bf Convergence of Gradient Descent for a General Convex Objective}
+
+Now let's consider any convex, twice continuously differentiable objective function $J(\theta)$ that is bounded from below.
+Suppose that the largest eigenvalue of the Hessian matrix $H=\nabla^2 J(\theta) $ is less than or equal to $\beta_{\max}$ for all points $\theta$.
+
+
+Show that when running gradient descent, choosing a step size $0 < \alpha < \frac{1}{\beta_{\max}}$ guarantees that $J(\theta^{[t]})$ will converge to some finite value as $t$ approaches infinity.\footnote{This definition of convergence is different from the definition in previous questions where we explicitly prove that the parameter $\theta$ converges to an optimal parameter $\theta^*$. In this case, we do not know the optimal value $\theta^*$, and it would be difficult to prove convergence using the previous definition.} Specifically, you should derive an inequality for $J(\theta^{[t]})$ in terms of $J(\theta^{[t-1]})$, $\nabla J(\theta^{[t-1]})$, $\alpha$, and $\beta_{\max}$, and show that the objective function is strictly decreasing during each iteration, i.e. $J(\theta^{[t]}) < J(\theta^{[t-1]})$.
+
+
+\textit{Hint:} You can assume that, by Taylor's theorem, the following statement is true:
+\begin{equation*}
+	J(y) = J(x) + \nabla J(x)^\top (y-x) + \frac{1}{2}(y-x)^\top \nabla^2 J(x + c(y-x)) (y-x) \text{ for some } 0 \leq c \leq 1
+\end{equation*}
+
+
+\textit{Hint:} The Hessian of a convex function is symmetric and positive semi-definite at any point $\theta$, which means all of its eigenvalues are real and non-negative.
+
+\textit{Hint:} The Hessian matrix is symmetric. Consider using the spectral theorem introduced in problem 3 in homework 0.
+
+\textit{\textbf{Optional (no credit):}}  Using the gradient descent inequality that you derived, show that the GD algorithm converges in the sense that  $\lim_{t\to\infty}||\nabla J(\theta^{[t]})||_{2}^{2}=0$.\footnote{Note that $\lim_{t\to\infty}||\nabla J(\theta^{[t]})||_{2}^{2}=0$ does not necessarily mean that there exists a vector $\hat{\theta}$ such that $\theta^{[t]} \rightarrow \hat{\theta}$. (Even an 1-dimensional counterexample exists.) However, for convex functions, when $\theta^{[t]}$ stays in a bounded set, $\lim_{t\to\infty}||\nabla J(\theta^{[t]})||_{2}^{2}=0$ does imply that $J(\theta^{[t]}) \rightarrow \inf_\theta J(\theta)$ as $t\rightarrow \infty$. Therefore, $\lim_{t\to\infty}||\nabla J(\theta^{[t]})||_{2}^{2}=0$ is typically considered a reasonable definition for an optimization algorithm's convergence.}
+
+\textit{Remark:} This question suggests that a smaller learning rate should be applied if we believe the curvature of the objective function is big.

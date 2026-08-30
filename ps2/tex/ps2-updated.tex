@@ -1,0 +1,73 @@
+% !TeX root = ps2-updated.tex
+
+\def\qtr{Summer 2025}
+\def\due{Friday, July 25 at 11:59 pm}
+\def\latedue{Monday, July 28 at 11:59 pm}
+\def\edstem{\url{https://edstem.org/us/courses/79825/discussion}}
+\def\psetnum{2 }
+
+\newcommand{\solutions}{1}
+
+%%% Change the following flag to toggle between questions or solutions
+\ifdefined\solutions {} \else \def\solutions{0} \fi
+
+\input{macros.tex}
+\def\shownotes{1}  %set 1 to show author notes
+\ifnum\shownotes=1
+\newcommand{\authnote}[2]{$\ll$\textsf{\footnotesize #1 notes: #2}$\gg$}
+\else
+\newcommand{\authnote}[2]{}
+\fi
+
+\newcommand{\tnote}[1]{{\color{blue}\authnote{Tengyu}{#1}}}
+%\newcommand{\knote}[1]{{\color{blue}\authnote{Kefan}{#1}}} 
+%\newcommand{\fk}[1]{{\color{purple}{[FK:#1]}}}
+%\newcommand{\notes}[1]{{\color{blue} Note:} \textit{#1} \newline}
+
+\begin{document} 
+
+\pagestyle{myheadings} \markboth{}{CS229 Problem Set \#\psetnum}
+
+\ifnum\solutions=1{
+{\huge\noindent CS 229, \qtr\\
+Problem Set \#\psetnum}\\\\
+Baran Peters (\texttt{baranp@stanford.edu})
+} \else {\huge
+\noindent CS 229, \qtr\\
+Problem Set \#\psetnum
+} \fi
+
+\ruleskip
+
+{\bf Due {\due } on Gradescope.}
+
+\medskip
+
+\input{00-instructions/00-main}
+
+\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
+
+\clearpage
+\input{poisson/00-main}
+
+\clearpage
+\input{glmconvexity/00-main}
+
+\clearpage
+\input{logreg_stability/00-main}
+
+
+\clearpage
+\input{imbalanced/00-main}
+
+\clearpage
+\input{mnist/00-main}
+
+\clearpage
+\input{simple_nn/00-main}
+
+\clearpage{}
+
+\end{enumerate}
+
+\end{document}

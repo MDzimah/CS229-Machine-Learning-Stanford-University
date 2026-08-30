@@ -1,0 +1,13 @@
+\item\subquestionpoints{5} 
+\textbf{Coding question: minimum norm solution generalizes well}
+
+For this sub-question, we still work with the setup of parts (a) and (b). We use the following datasets:
+\begin{center}
+	\url{src/implicitreg/ds1_train.csv, ds1_valid.csv}
+\end{center}
+Each file contains $d+1$ columns. The first $d$ columns in the $i$-th row represents $x^{(i)}$, and the last column represents $y^{(i)}.$ In this sub-question, we use $d=200$ and $n=40$.
+
+Using the formula in sub-question (b), \textbf{compute} the minimum norm solution using the training dataset. Then, \textbf{generate} three other different solutions with zero costs and different norms using the formula in sub-question (a).
+The starter code is in \url{src/implicitreg/linear.py}. \textbf{Plot} the validation error of these solutions (including the minimum norm solution) in a scatter plot. 
+Use the norm of the solutions as $x$-axis, and the validation error as $y$-axis. For your convenience, the plotting function is provided as the method \url{generate_plot} in the starter code. 
+Your plot is expected to demonstrate that the minimum norm solution generalizes well.

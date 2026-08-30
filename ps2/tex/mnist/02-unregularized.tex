@@ -1,0 +1,38 @@
+\item \points{15} 
+
+%\tnote{to update math notations below. }
+%\tnote{double check consistenty with code. Ideally we should make minimal changes to the code}
+
+Implement both forward-propagation and back-propagation for the above loss function $J_{MB} = \frac{1}{B}\sum_{k=1}^B \ell_\textup{CE}(\bar{h}_{\theta}(x^{(i_k)}),y^{(i_k)})
+$\tnote{changed the equation}.
+Initialize the weights of the network by sampling values from a standard normal
+distribution. Initialize the bias/intercept term to 0.
+Set the number of hidden units to be 300, and learning rate to be 5. Set $B = 1,000$
+(mini batch size). This means that we train with 1,000 examples in each iteration.
+Therefore, for each epoch, we need 50 iterations to cover the entire training data.
+The images are pre-shuffled. So you don't need to randomly sample the data, and can
+just create mini-batches sequentially.
+
+
+Train the model with mini-batch gradient descent
+as described above. Run the training for 30 epochs. At the end of each epoch, calculate
+the value of loss function averaged over the entire training set, and plot it
+(y-axis) against the number of epochs (x-axis). In the same image, plot the value
+of the loss function averaged over the dev set, and plot it against the number of epochs.
+
+Similarly, in a new image, plot the accuracy (on y-axis) over the training set,
+measured as the fraction of correctly classified examples, versus the number of epochs
+(x-axis). In the same image, also plot the accuracy over the dev set versus number of epochs.
+
+\textbf{Submit the two plots (one for loss vs epoch, another for accuracy vs epoch) in your writeup.}
+
+Also, at the end of 30 epochs, save the learnt parameters (i.e., all the weights and biases)
+into a file, so that next time you can directly initialize the parameters with
+these values from the file, rather than re-training all over. You do NOT need to
+submit these parameters.
+
+% \todo{Add in two subquestions i) and ii) that ask for expressions for individual partial derivatives. This makes grading this question and answering OH questions much easier. See Fall 2023 PS2 PDF as an example. (Please push your changes.)}
+
+
+\textbf{Hint:} Be sure to vectorize your code as much as possible! Training can be
+very slow otherwise. For better vectorization, use one-hot label encodings in the code ($e_y$ in part (a)).
