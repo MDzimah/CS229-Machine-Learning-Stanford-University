@@ -1,4 +1,4 @@
-# CS229  Spring 2026 notes / Solutions Summer 2025
+# CS229  Spring 2026 notes / Summer 2025 solutions
 This repository contains my notes on the Spring 2026 course and my solutions to the Summer 2025 problem sets. Both offerings of the course are almost identical. The written parts are done handwritten instead of in LaTex.
 
 ## Credits
