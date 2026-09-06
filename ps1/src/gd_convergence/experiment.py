@@ -5,7 +5,7 @@ theta_0 = np.array([-1, 0.5])
 
 def J(theta):
     # Rewrite with @
-    return theta.T.dot(A).dot(theta)
+    return theta @ A @ theta
 
 def update_theta(theta, lr):
     """Problem: given the current value of theta and the learning rate lr,
@@ -20,10 +20,9 @@ def update_theta(theta, lr):
         the new value of theta after 1 iteration of gradient descend
     """
     # *** START CODE HERE ***
-    
-# TODO: implement this section.
-pass
-# *** END CODE HERE ***
+    # J(theta) = theta^T @ A @ theta
+    # gradient J(theta) = (A + A^T) @ theta = 2A @ theta 
+    return theta- lr * (2 * A @ theta)
 
 def gradient_descend(J, theta_0, lr, update_theta, epsilon=1e-50):
     """Write the gradient descend algorithm using the parameters.
@@ -40,10 +39,13 @@ def gradient_descend(J, theta_0, lr, update_theta, epsilon=1e-50):
     """
     final_theta = theta_0
     # *** START CODE HERE ***
-    
-# TODO: implement this section.
-pass
-# *** END CODE HERE ***
+    old_loss = float("inf")
+    new_loss = J(final_theta)
+    while np.abs(new_loss - old_loss) >= epsilon and new_loss < 1e20:
+        old_loss = new_loss
+        final_theta = update_theta(final_theta, lr)
+        new_loss = J(final_theta)
+
     return final_theta
 
 if __name__ == "__main__":
