@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import util
-
+from pathlib import Path # Just for DATA_DIR
 
 def main(tau, train_path, eval_path):
     """Problem: Locally weighted regression (LWR)
@@ -15,9 +15,16 @@ def main(tau, train_path, eval_path):
     x_train, y_train = util.load_dataset(train_path, add_intercept=True)
 
     # *** START CODE HERE ***
+    x_eval, _ = util.load_dataset(eval_path, add_intercept=True)
+
+    clf = LocallyWeightedLinearRegression(tau)
+    clf.fit(x_train, y_train)
+
+    clf.last_theta = (x_train @ W @ x_train)^-1 @ x_train @ W @ y_train
     
-# TODO: implement this section.
-pass
+    clf.predict(x_eval)
+    
+
 # *** END CODE HERE ***
 
 
@@ -42,9 +49,8 @@ class LocallyWeightedLinearRegression():
 
         """
         # *** START CODE HERE ***
-        
-# TODO: implement this section.
-pass
+        self.x = x
+        self.y = y
 # *** END CODE HERE ***
 
     def predict(self, x):
@@ -57,12 +63,13 @@ pass
             Outputs of shape (m,).
         """
         # *** START CODE HERE ***
-        
-# TODO: implement this section.
-pass
+        return self.last_theta @ x
+
 # *** END CODE HERE ***
+
+DATA_DIR = Path(__file__).parent
 
 if __name__ == '__main__':
     main(tau=5e-1,
-         train_path='./train.csv',
-         eval_path='./valid.csv')
+         train_path=DATA_DIR / 'train.csv',
+         eval_path=DATA_DIR / 'valid.csv')
